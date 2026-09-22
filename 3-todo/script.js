@@ -36,16 +36,22 @@ function deleteTask(id) {
 }
 
 function clearCompleted() {
-  tasks = [];
+  tasks = tasks.filter((x) => !x.done);
   render();
 }
 
 function getVisibleTasks() {
+  if (currentFilter === "done") {
+    return tasks.filter((x) => x.done);
+  } else if (currentFilter === "active") {
+    return tasks.filter((x) => !x.done);
+  }
   return tasks;
 }
 
 function updateCounter() {
-  counter.textContent = "Активных задач: " + tasks.length;
+  counter.textContent =
+    "Активных задач: " + tasks.filter((x) => !x.done).length;
 }
 
 function render() {
@@ -82,6 +88,8 @@ addBtn.addEventListener("click", addTask);
 clearBtn.addEventListener("click", clearCompleted);
 
 filterButtons.forEach((btn) => {
+  console.log(btn.dataset.filter);
+
   btn.addEventListener("click", () => {
     filterButtons.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
