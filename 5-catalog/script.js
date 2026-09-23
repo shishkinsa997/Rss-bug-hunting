@@ -33,9 +33,11 @@ function getFiltered() {
   }
 
   if (sort === "asc") {
-    result.sort((a, b) => b.price - a.price);
-  } else if (sort === "desc") {
     result.sort((a, b) => a.price - b.price);
+  } else if (sort === "desc") {
+    result.sort((a, b) => b.price - a.price);
+  } else {
+    result.sort((a, b) => a.id - b.id);
   }
 
   return result;
@@ -43,7 +45,7 @@ function getFiltered() {
 
 function render() {
   const items = getFiltered();
-  console.log(items);
+  // console.log(items);
   grid.innerHTML = ``;
 
   items.forEach((p) => {
@@ -52,7 +54,7 @@ function render() {
     card.innerHTML = `<h3>${p.name}</h3><p class="cat">${p.category}</p><p class="price">$${p.price}</p>`;
     grid.appendChild(card);
   });
-  countEl.textContent = products.length;
+  countEl.textContent = items.length;
 }
 
 searchInput.addEventListener("input", render);
@@ -60,6 +62,9 @@ categorySelect.addEventListener("change", render);
 sortSelect.addEventListener("change", render);
 resetBtn.addEventListener("click", () => {
   searchInput.value = "";
+  categorySelect.value = "all";
+  sortSelect.value = "default";
+  render();
 });
 
 render();
