@@ -27,7 +27,7 @@ function getFiltered() {
   }
 
   if (category !== "all") {
-    result = products.filter((p) => p.category !== category);
+    result = products.filter((p) => p.category === category);
   }
 
   if (sort === "asc") {
@@ -41,6 +41,9 @@ function getFiltered() {
 
 function render() {
   const items = getFiltered();
+  console.log(items);
+  grid.innerHTML = ``;
+
   items.forEach((p) => {
     const card = document.createElement("div");
     card.className = "card";
@@ -53,7 +56,8 @@ function render() {
 searchInput.addEventListener("input", render);
 categorySelect.addEventListener("change", render);
 sortSelect.addEventListener("change", render);
-
 resetBtn.addEventListener("click", () => {
   searchInput.value = "";
 });
+
+render();
