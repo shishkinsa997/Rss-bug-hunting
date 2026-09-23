@@ -59,7 +59,6 @@ function render() {
   list.innerHTML = ``;
   for (let i = 0; i <= visible.length - 1; i++) {
     const task = visible[i];
-    console.log(task);
 
     const li = document.createElement("li");
     li.className = "task";
@@ -88,8 +87,6 @@ addBtn.addEventListener("click", addTask);
 clearBtn.addEventListener("click", clearCompleted);
 
 filterButtons.forEach((btn) => {
-  console.log(btn.dataset.filter);
-
   btn.addEventListener("click", () => {
     filterButtons.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");

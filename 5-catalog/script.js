@@ -19,7 +19,6 @@ const countEl = document.getElementById("count");
 function getFiltered() {
   let result = products;
   const search = searchInput.value.toLowerCase().trim();
-  console.log(search);
 
   const category = categorySelect.value;
   const sort = sortSelect.value;
@@ -45,7 +44,6 @@ function getFiltered() {
 
 function render() {
   const items = getFiltered();
-  // console.log(items);
   grid.innerHTML = ``;
 
   items.forEach((p) => {
