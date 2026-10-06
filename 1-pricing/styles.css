@@ -39,7 +39,6 @@ body {
 
 .plans {
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   align-items: stretch;
   gap: 24px;
@@ -48,6 +47,8 @@ body {
 }
 
 .plan {
+  display: flex;
+  flex-direction: column;
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
@@ -98,7 +99,10 @@ body {
 }
 
 .btn {
-  display: inline-block;
+  display: block;
+  margin-top: auto;
+  align-self: center;
+  width: fit-content;
   padding: 12px 28px;
   border-radius: 8px;
   background: #2563eb;
