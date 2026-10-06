@@ -18,7 +18,6 @@ function addTask() {
   } else {
     tasks.push({ id: nextId++, text: text, done: false });
   }
-  console.log(tasks);
 
   input.value = "";
   render();
